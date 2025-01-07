@@ -49,7 +49,7 @@ class RacetrackEnv(AbstractEnv):
                 "lane_centering_reward": 2,
                 "action_reward": -0.3,
                 "controlled_vehicles": 1,
-                "other_vehicles": 1,
+                "other_vehicles": 5,
                 "screen_width": 600,
                 "screen_height": 600,
                 "centering_position": [0.5, 0.5],
@@ -108,8 +108,9 @@ class RacetrackEnv(AbstractEnv):
 
         if front_vehicle and self.vehicle.lane_index == front_vehicle.lane_index:
             if distance_to_front <= 10:
+                # "Semi Filter" of
                 if lateral_action != 0:  # Reward only for lateral moves
-                    lane_change_reward = 10  # Reward lane change
+                    lane_change_reward = 5  # Reward lane change
                 proximity_penalty = 10 / (1 + distance_to_front)
         
         if not self.vehicle.on_road:
