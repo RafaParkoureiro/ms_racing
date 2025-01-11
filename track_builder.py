@@ -8,7 +8,6 @@ Edouard Leurent - 2018
 https://github.com/eleurent/highway-env
 '''
 
-
 import numpy as np
 from highway_env.road.lane import CircularLane, LineType, StraightLane
 from highway_env.road.road import Road, RoadNetwork

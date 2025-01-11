@@ -3,10 +3,13 @@ import os
 import numpy as np
 from racetrack_env import RacetrackEnv
 from gymnasium.envs.registration import EnvSpec
+import matplotlib.pyplot as plt
 
 # Set up directories
 current_folder = os.path.dirname(os.path.abspath(__file__))
-models_folder = os.path.join(current_folder, "models")
+models_folder = os.path.join(current_folder, "models_v2")
+png_folder = os.path.join(current_folder, "png")
+os.makedirs(png_folder, exist_ok=True)
 
 # List available models
 def list_models():
@@ -78,14 +81,23 @@ if __name__ == "__main__":
         total_reward = 0
         done = False
         step=0
+        # Save the first frame of the episode
+        '''
+        frame = env.render()
+        frame_path = os.path.join(png_folder, f"episode_{episode + 1}_frame.png")
+        plt.imsave(frame_path, frame)
+        print(f"Saved first frame of episode {episode + 1} to {frame_path}")
+        '''
         while not done:
             action, _ = model.predict(obs, deterministic=True)
             obs, reward, terminated, truncated, info = env.step(action)
             done = terminated or truncated
             total_reward += reward
             step+=1
-            #rewards_truncated = {key: round(value, 3) if isinstance(value, (int, float)) else value for key, value in info.get("rewards", {}).items()}
-            print("STEP", step, "(reward",reward,"):",info.get("rewards"))
+            #print("STEP", step, "(reward",reward,"):",info.get("rewards"))
+            keys_of_interest = ['lane_centering_reward', 'action_reward', 'proximity_penalty', 'lane_change_reward']
+            filtered_rewards = {key: info.get("rewards", {}).get(key) for key in keys_of_interest}
+            print(f"STEP {step} (reward {reward}): {filtered_rewards}")
             if done:
                 print(f"Episode ended: Terminated={terminated}, Truncated={truncated}")
             env.render()  # Visualize the environment

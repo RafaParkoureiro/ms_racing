@@ -6,8 +6,8 @@ from custom_metrics import CustomMetricsCallback
 
 # Set up directories
 current_folder = os.path.dirname(os.path.abspath(__file__))
-logs_folder = os.path.join(current_folder, "logs")
-models_folder = os.path.join(current_folder, "models")
+logs_folder = os.path.join(current_folder, "logs_v2")
+models_folder = os.path.join(current_folder, "models_v2")
 
 # Function to create parallel environments
 def create_custom_racetrack_env():
@@ -49,13 +49,12 @@ if __name__ == "__main__":
                 env,
                 verbose=2,
                 tensorboard_log=tensorboard_log,
-                learning_rate=5e-5,   # Smaller learning rate
-                n_steps=4096,         # Larger steps per update
-                gamma=0.98,           # Slightly lower gamma
+                learning_rate=4e-5,   # Smaller learning rate
+                n_steps=2048,         # Larger steps per update
+                gamma=0.985,          # Slightly lower gamma
                 gae_lambda=0.8,       # Adjust GAE lambda
-                clip_range=0.1,       # Smaller clip range
+                clip_range=0.2,
                 vf_coef=0.4,          # Reduce weight of value loss
-                ent_coef=0.001,       # Encourage less exploration
                 normalize_advantage=True,
                 device=device,
             )
@@ -67,7 +66,7 @@ if __name__ == "__main__":
                 tensorboard_log=tensorboard_log,
                 learning_rate=3e-4,
                 n_steps=50,
-                gamma=0.98,
+                gamma=0.985,
                 gae_lambda=0.95,
                 max_grad_norm=0.3,
                 device=device,
@@ -91,10 +90,11 @@ if __name__ == "__main__":
                 env,
                 verbose=2,
                 tensorboard_log=tensorboard_log,
-                learning_rate=3e-4,
+                learning_rate=2e-4,
                 gamma=0.99,
                 tau=0.005,
                 train_freq=1,
+                normalize_advantage=True,
                 gradient_steps=1,
                 device=device,
             )
