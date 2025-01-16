@@ -12,6 +12,15 @@ The main objectives of this project are:
 
 Our custom environment is heavily based on [HighwayEnv](https://github.com/Farama-Foundation/HighwayEnv), an open-source project for training autonomous driving agents. While HighwayEnv provides a solid foundation, we introduced significant modifications, including custom rewards, dynamic scenario generation, and enhanced metrics to better suit racetrack-style simulations.
 
+## How to run
+
+If your machine has:
+- GPU
+- cuda/cudatoolkit>=11.8
+simply import the python environment ms_env.yaml into conda.
+
+Otherwise, some libraries like torch+cuda will be incompatible.
+
 ## Training
 
 The training is performed using `train_model.py`, which leverages [Stable-Baselines3](https://stable-baselines3.readthedocs.io/) for RL algorithms. Key features of the script include:
