@@ -45,7 +45,10 @@ SAC and PPO were chosen for benchmarking based on their superior performance dur
 
 ## Learned SAC Policy
 
-
+  <p align="center">
+    <img src="models/sac.gif" alt="Learned Policy" height="400">
+    <br> Learned Policy
+  </p>
 
 ## References
 
