@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 # Set up directories
 current_folder = os.path.dirname(os.path.abspath(__file__))
-models_folder = os.path.join(current_folder, "models_v2")
+models_folder = os.path.join(current_folder, "models")
 png_folder = os.path.join(current_folder, "png")
 os.makedirs(png_folder, exist_ok=True)
 
