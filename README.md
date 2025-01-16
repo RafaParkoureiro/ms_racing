@@ -60,6 +60,10 @@ SAC and PPO were chosen for benchmarking based on their superior performance dur
     <br> Learned Policy
   </p>
 
+TODO:
+- Higher proximity penalty
+- Higher distance to front car threshold
+
 ## References
 
 1. HighwayEnv: [Farama Foundation GitHub Repository](https://github.com/Farama-Foundation/HighwayEnv)
