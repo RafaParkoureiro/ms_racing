@@ -6,8 +6,8 @@ from custom_metrics import CustomMetricsCallback
 
 # Set up directories
 current_folder = os.path.dirname(os.path.abspath(__file__))
-logs_folder = os.path.join(current_folder, "logs_v2")
-models_folder = os.path.join(current_folder, "models_v2")
+logs_folder = os.path.join(current_folder, "logs")
+models_folder = os.path.join(current_folder, "models")
 
 # Function to create parallel environments
 def create_custom_racetrack_env():
