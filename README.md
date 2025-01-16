@@ -17,6 +17,7 @@ Our custom environment is heavily based on [HighwayEnv](https://github.com/Faram
 If your machine has:
 - GPU
 - cuda/cudatoolkit>=11.8
+
 simply import the python environment ms_env.yaml into conda.
 
 Otherwise, some libraries like torch+cuda will be incompatible.
